@@ -69,7 +69,7 @@ steps:
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
   args: [
-      'wait_for_dag_deployed.sh',
+      'wait-for-dag-deployed.sh',
       '${_COMPOSER_ENV_NAME}',
       '${_COMPOSER_REGION}',
       '${_COMPOSER_DAG_NAME_TEST}',
