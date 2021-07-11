@@ -6,9 +6,12 @@ testing of a data processing workflow.
 
 Please refer to the [solution
 guide](https://cloud.google.com/solutions/cicd-pipeline-for-data-processing)
-for the steps to run the code. Bear in mind the workflow folder structure is
-different in the present repo, inspired by additional thoughts from the below
-links and examples.
+for the steps to run the code.
+
+> Bear in mind the `workflow` folder in this fork is a bit different from the
+> [original](https://github.com/GoogleCloudPlatform/ci-cd-for-data-processing-workflow/tree/master/source-code/workflow-dag)
+> `workflow-dag`. The changes were inspired by additional thoughts from the
+> below examples.
 
 ## Useful Links & Examples
 
