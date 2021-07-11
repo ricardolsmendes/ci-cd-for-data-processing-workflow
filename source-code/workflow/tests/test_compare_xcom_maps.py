@@ -23,16 +23,17 @@ TASK_ID = 'test_compare_task_id'
 REF_TASK_ID = 'download_ref_string'
 DOWNLOAD_TASK_PREFIX = 'download_result'
 CONTEXT_CLASS_NAME = 'airflow.ti_deps.dep_context'
-ERROR_LINE_ONE = 'The result differs from the expected in the following ways:\n'
+ERROR_LINE_ONE = 'The result differs from the expected' \
+                 ' in the following ways:\n'
 
 
 def generate_mock_function(first_value, second_value, third_value):
     def mock_function(**kwargs):
         return {
             REF_TASK_ID: 'a: 1\nb: 2\nc: 3',
-            DOWNLOAD_TASK_PREFIX + '_1': first_value,
-            DOWNLOAD_TASK_PREFIX + '_2': second_value,
-            DOWNLOAD_TASK_PREFIX + '_3': third_value
+            f'{DOWNLOAD_TASK_PREFIX}_1': first_value,
+            f'{DOWNLOAD_TASK_PREFIX}_2': second_value,
+            f'{DOWNLOAD_TASK_PREFIX}_3': third_value
         }[kwargs['task_ids']]
 
     return mock_function
@@ -61,16 +62,16 @@ class CompareXComMapsOperatorTest(unittest.TestCase):
             task_id=TASK_ID,
             ref_task_ids=[REF_TASK_ID],
             res_task_ids=[
-                DOWNLOAD_TASK_PREFIX + '_1', DOWNLOAD_TASK_PREFIX + '_2',
-                DOWNLOAD_TASK_PREFIX + '_3'
+                f'{DOWNLOAD_TASK_PREFIX}_1', f'{DOWNLOAD_TASK_PREFIX}_2',
+                f'{DOWNLOAD_TASK_PREFIX}_3'
             ])
 
     def test_init(self):
         self.assertEqual(self.xcom_compare.task_id, TASK_ID)
         self.assertListEqual(self.xcom_compare.ref_task_ids, [REF_TASK_ID])
         self.assertListEqual(self.xcom_compare.res_task_ids, [
-            DOWNLOAD_TASK_PREFIX + '_1', DOWNLOAD_TASK_PREFIX + '_2',
-            DOWNLOAD_TASK_PREFIX + '_3'
+            f'{DOWNLOAD_TASK_PREFIX}_1', f'{DOWNLOAD_TASK_PREFIX}_2',
+            f'{DOWNLOAD_TASK_PREFIX}_3'
         ])
 
     def assertRaisesWithMessage(self, error_type, msg, func, *args, **kwargs):
@@ -91,19 +92,17 @@ class CompareXComMapsOperatorTest(unittest.TestCase):
             self.xcom_compare.execute(context_mock)
 
     def test_missing_value(self):
-        self.execute_value_error(
-            missing_value_mock(), '{}{}'.format(ERROR_LINE_ONE,
-                                                'missing key: c in result'))
+        self.execute_value_error(missing_value_mock(),
+                                 f'{ERROR_LINE_ONE}missing key: c in result')
 
     def test_wrong_value(self):
         self.execute_value_error(
-            wrong_value_mock(), '{}{}'.format(ERROR_LINE_ONE,
-                                              'expected b: 2 but got b: 4'))
+            wrong_value_mock(), f'{ERROR_LINE_ONE}expected b: 2 but got b: 4')
 
     def test_unexpected_value(self):
         self.execute_value_error(
             unexpected_value_mock(),
-            '{}{}'.format(ERROR_LINE_ONE, 'unexpected key: d in result'))
+            f'{ERROR_LINE_ONE}unexpected key: d in result')
 
 
 suite = unittest.TestLoader().loadTestsFromTestCase(
