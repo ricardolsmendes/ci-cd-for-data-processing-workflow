@@ -14,6 +14,7 @@
 """Data processing production workflow definition.
 """
 import datetime
+
 from airflow import models
 from airflow.contrib.operators.dataflow_operator import DataFlowJavaOperator
 
@@ -27,9 +28,9 @@ dataflow_jar_location = 'gs://%s/%s' % (
 project = models.Variable.get('gcp_project')
 region = models.Variable.get('gcp_region')
 zone = models.Variable.get('gcp_zone')
-input_bucket = 'gs://' + models.Variable.get('gcs_input_bucket_prod')
+input_bucket = f'gs://{models.Variable.get("gcs_input_bucket_prod")}'
 output_bucket_name = models.Variable.get('gcs_output_bucket_prod')
-output_bucket = 'gs://' + output_bucket_name
+output_bucket = f'gs://{output_bucket_name}'
 output_prefix = 'output'
 download_task_prefix = 'download_result'
 
@@ -46,18 +47,17 @@ default_args = {
     }
 }
 
-with models.DAG(
-    'prod_word_count',
-    schedule_interval=None,
-    default_args=default_args) as dag:
-  dataflow_execution = DataFlowJavaOperator(
-      task_id='wordcount-run',
-      jar=dataflow_jar_location,
-      start_date=yesterday,
-      options={
-          'autoscalingAlgorithm': 'THROUGHPUT_BASED',
-          'maxNumWorkers': '3',
-          'inputFile': input_bucket+'/input.txt',
-          'output': output_bucket+'/'+output_prefix
-      }
-  )
+with models.DAG('prod_word_count',
+                schedule_interval=None,
+                default_args=default_args) as dag:
+
+    dataflow_execution = DataFlowJavaOperator(
+        task_id='wordcount-run',
+        jar=dataflow_jar_location,
+        start_date=yesterday,
+        options={
+            'autoscalingAlgorithm': 'THROUGHPUT_BASED',
+            'maxNumWorkers': '3',
+            'inputFile': f'{input_bucket}/input.txt',
+            'output': f'{output_bucket}/{output_prefix}'
+        })

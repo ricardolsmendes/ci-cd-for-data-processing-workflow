@@ -63,7 +63,7 @@ steps:
   dir: '$REPO_NAME/workflow/plugins/xcom_utils_plugin/operators'
   id: 'deploy-custom-operator'
 - name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'data-pipeline-test.py', '${_COMPOSER_DAG_BUCKET}']
+  args: ['cp', 'data_pipeline_test.py', '${_COMPOSER_DAG_BUCKET}']
   dir: '$REPO_NAME/workflow/dags'
   id: 'deploy-processing-pipeline'
 - name: gcr.io/cloud-builders/gcloud
