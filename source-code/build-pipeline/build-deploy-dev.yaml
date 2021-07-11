@@ -30,7 +30,7 @@ steps:
   ]
   dir: '$REPO_NAME/data-processing-code/target'
   id: 'deploy-jar'
-- name: 'gcr.io/cloud-solutions-images/apache-airflow:1.10'
+- name: gcr.io/cloud-solutions-images/apache-airflow:1.10
   entrypoint: 'python'
   args: ['test_compare_xcom_maps.py']
   dir: '$REPO_NAME/workflow/tests'
