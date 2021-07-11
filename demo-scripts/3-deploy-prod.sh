@@ -36,7 +36,7 @@ _COMPOSER_DAG_NAME_PROD   : ${COMPOSER_DAG_NAME_PROD}
 
 cd ./data-pipeline-source/build-pipeline
 
-gcloud builds submit --config=deploy_prod.yaml --substitutions=\
+gcloud builds submit --config=deploy-prod.yaml --substitutions=\
 REPO_NAME=$SOURCE_CODE_REPO,\
 _DATAFLOW_JAR_BUCKET_TEST=$DATAFLOW_JAR_BUCKET_TEST,\
 _DATAFLOW_JAR_FILE_LATEST=$DATAFLOW_JAR_FILE_LATEST,\

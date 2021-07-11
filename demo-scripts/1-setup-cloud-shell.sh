@@ -14,11 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-source ./ci-cd-for-data-processing-workflow/env-setup/set_env.sh
+source ./ci-cd-for-data-processing-workflow/env-setup/set-env.sh
 
 
-chmod +x ./ci-cd-for-data-processing-workflow/env-setup/set_composer_variables.sh
-./ci-cd-for-data-processing-workflow/env-setup/set_composer_variables.sh
+chmod +x ./ci-cd-for-data-processing-workflow/env-setup/set-composer-variables.sh
+./ci-cd-for-data-processing-workflow/env-setup/set-composer-variables.sh
 
 
 export COMPOSER_DAG_BUCKET=$(gcloud composer environments describe $COMPOSER_ENV_NAME \

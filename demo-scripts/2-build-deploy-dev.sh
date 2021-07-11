@@ -28,7 +28,7 @@ _COMPOSER_DAG_NAME_TEST : ${COMPOSER_DAG_NAME_TEST}
 
 cd ./data-pipeline-source/build-pipeline
 
-gcloud builds submit --config=build_deploy_test.yaml --substitutions=\
+gcloud builds submit --config=build-deploy-dev.yaml --substitutions=\
 REPO_NAME=$SOURCE_CODE_REPO,\
 _DATAFLOW_JAR_BUCKET=$DATAFLOW_JAR_BUCKET_TEST,\
 _COMPOSER_INPUT_BUCKET=$INPUT_BUCKET_TEST,\
