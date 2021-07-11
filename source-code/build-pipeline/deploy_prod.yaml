@@ -27,7 +27,7 @@ steps:
   id: 'check-out-source-code'
 - name: gcr.io/cloud-builders/gsutil
   args: ['cp', 'support-files/input.txt', 'gs://${_COMPOSER_INPUT_BUCKET}']
-  dir: '$REPO_NAME/workflow-dag'
+  dir: '$REPO_NAME/workflow'
   id: 'deploy-input-file'
 - name: gcr.io/cloud-builders/gcloud
   args: [
@@ -46,7 +46,7 @@ steps:
   id: 'set-composer-jar-ref'
 - name: gcr.io/cloud-builders/gsutil
   args: ['cp', 'data-pipeline-prod.py', '${_COMPOSER_DAG_BUCKET}']
-  dir: '$REPO_NAME/workflow-dag'
+  dir: '$REPO_NAME/workflow/dags'
   id: 'deploy-processing-pipeline'
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
