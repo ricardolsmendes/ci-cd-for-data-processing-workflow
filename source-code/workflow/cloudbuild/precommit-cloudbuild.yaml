@@ -17,6 +17,21 @@
 # to build everything that it will be orchestrating and stage it in a known,
 # readable place to facilitate the tests.
 steps:
+# Install dev dependencies
+- name: python:3.6
+  entrypoint: pip
+  args: ["install", "-r", "requirements-dev.txt", "--user"]
+  id: 'install-dev-dependencies'
+# Run the YAPF formatter
+- name: python:3.6
+  entrypoint: python
+  args: ["-m", "yapf", "--diff", "--recursive", "dags", "plugins", "tests"]
+  id: 'run-yapf-formatter'
+# Run the Flake8 linter
+- name: python:3.6
+  entrypoint: python
+  args: ["-m", "flake8", "dags", "plugins", "tests"]
+  id: 'run-flake8-linter'
 # Run unit tests in Airflow container (local to cloud build)
 - name: gcr.io/cloud-solutions-images/apache-airflow:1.10
   entrypoint: 'bash'

@@ -75,7 +75,7 @@ function set_local_conn() {
 
 # Run DAG validation tests.
 function run_tests() {
-  python3 -m unittest discover
+  python3 -m unittest
 }
 
 function clean_up() {
