@@ -18,19 +18,18 @@ import datetime
 from airflow import models
 from airflow.contrib.operators.dataflow_operator import DataFlowJavaOperator
 
-dataflow_staging_bucket = \
-    f'gs://{models.Variable.get("dataflow_staging_bucket_prod")}/staging'
+project = models.Variable.get('gcp_project')
+region = models.Variable.get('gcp_region')
+zone = models.Variable.get('gcp_zone')
 
 dataflow_jar_location = \
     f'gs://{models.Variable.get("dataflow_jar_location_prod")}' \
     f'/{models.Variable.get("dataflow_jar_file_prod")}'
+dataflow_staging_bucket = \
+    f'gs://{models.Variable.get("dataflow_staging_bucket_prod")}/staging'
 
-project = models.Variable.get('gcp_project')
-region = models.Variable.get('gcp_region')
-zone = models.Variable.get('gcp_zone')
 input_bucket = f'gs://{models.Variable.get("gcs_input_bucket_prod")}'
-output_bucket_name = models.Variable.get('gcs_output_bucket_prod')
-output_bucket = f'gs://{output_bucket_name}'
+output_bucket = f'gs://{models.Variable.get("gcs_output_bucket_prod")}'
 output_prefix = 'output'
 download_task_prefix = 'download_result'
 

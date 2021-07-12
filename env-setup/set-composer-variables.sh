@@ -23,16 +23,16 @@ variables["gcp_project"]="${GCP_PROJECT_ID}"
 variables["gcp_region"]="${COMPOSER_REGION}"
 variables["gcp_zone"]="${COMPOSER_ZONE_ID}"
 variables["dataflow_jar_location_test"]="${DATAFLOW_JAR_BUCKET_TEST}"
+variables["dataflow_staging_bucket_test"]="${DATAFLOW_STAGING_BUCKET_TEST}"
 variables["dataflow_jar_file_test"]="to_be_overriden"
 variables["gcs_input_bucket_test"]="${INPUT_BUCKET_TEST}"
 variables["gcs_ref_bucket_test"]="${REF_BUCKET_TEST}"
 variables["gcs_output_bucket_test"]="${RESULT_BUCKET_TEST}"
-variables["dataflow_staging_bucket_test"]="${DATAFLOW_STAGING_BUCKET_TEST}"
 variables["dataflow_jar_location_prod"]="${DATAFLOW_JAR_BUCKET_PROD}"
+variables["dataflow_staging_bucket_prod"]="${DATAFLOW_STAGING_BUCKET_PROD}"
 variables["dataflow_jar_file_prod"]="to_be_overriden"
 variables["gcs_input_bucket_prod"]="${INPUT_BUCKET_PROD}"
 variables["gcs_output_bucket_prod"]="${RESULT_BUCKET_PROD}"
-variables["dataflow_staging_bucket_prod"]="${DATAFLOW_STAGING_BUCKET_PROD}"
 
 for i in "${!variables[@]}"; do
   gcloud composer environments run "${COMPOSER_ENV_NAME}" \

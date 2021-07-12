@@ -22,20 +22,20 @@ from airflow.contrib.operators.gcs_download_operator import \
 
 from compare_xcom_maps import CompareXComMapsOperator
 
-dataflow_staging_bucket = \
-    f'gs://{models.Variable.get("dataflow_staging_bucket_test")}/staging'
+project = models.Variable.get('gcp_project')
+region = models.Variable.get('gcp_region')
+zone = models.Variable.get('gcp_zone')
 
 dataflow_jar_location = \
     f'gs://{models.Variable.get("dataflow_jar_location_test")}' \
     f'/{models.Variable.get("dataflow_jar_file_test")}'
+dataflow_staging_bucket = \
+    f'gs://{models.Variable.get("dataflow_staging_bucket_test")}/staging'
 
-project = models.Variable.get('gcp_project')
-region = models.Variable.get('gcp_region')
-zone = models.Variable.get('gcp_zone')
 input_bucket = f'gs://{models.Variable.get("gcs_input_bucket_test")}'
+ref_bucket = models.Variable.get('gcs_ref_bucket_test')
 output_bucket_name = models.Variable.get('gcs_output_bucket_test')
 output_bucket = f'gs://{output_bucket_name}'
-ref_bucket = models.Variable.get('gcs_ref_bucket_test')
 output_prefix = 'output'
 download_task_prefix = 'download_result'
 
