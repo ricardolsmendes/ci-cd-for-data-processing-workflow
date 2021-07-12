@@ -30,19 +30,19 @@ class TestDagIntegrity(unittest.TestCase):
         self.dagbag = DagBag(
             dag_folder=f'{os.environ.get("AIRFLOW_HOME", "~/airflow/")}/dags/',
             include_examples=False)
-        with open('./config/running_dags.txt') as running_dags_txt:
+        with open('./config/running-dags.txt') as running_dags_txt:
             self.running_dag_ids = running_dags_txt.read().splitlines()
 
     def test_no_ignore_running_dags(self):
         """
-        Tests that we don't have any dags in running_dags.txt that are
+        Tests that we don't have any dags in running-dags.txt that are
         ignored by .airflowignore.
         """
         for dag_id in self.running_dag_ids:
             try:
                 self.assertTrue(self.dagbag.get_dag(dag_id) is not None)
             except AssertionError:
-                self.fail(f'{dag_id} is in running_dags.txt but not DagBag.')
+                self.fail(f'{dag_id} is in running-dags.txt but not DagBag.')
 
     def test_import_dags(self):
         """Tests there are no syntax issues or environment compatibility
