@@ -1,13 +1,15 @@
 # CI/CD for data processing workflow
 
-This repository contains source code based a guide on how to use Cloud Build
+This repository contains source code based on a guide on how to use Cloud Build
 and Cloud Composer to create a CI/CD pipeline for building, testing, and
 deploying a data processing workflow. Please refer to [Setting up a CI/CD
 pipeline for your data-processing workflow](https://cloud.google.com/architecture/cicd-pipeline-for-data-processing)
 for the overall steps to run the code.
 
-> **DISCLAIMER**: the present repo is a work in progress, and some commands may
-> fail. Feel free to file an issue if you find any errors while using it!  
+> **DISCLAIMER**: the present repo is a work in progress, and some steps may
+> fail. Feel free to [file an
+> issue](https://github.com/ricardolsmendes/ci-cd-for-data-processing-workflow/issues)
+> if you find any errors when using it!  
 
 Bear in mind the `source-code/workflow` folder structure in this fork is
 different from the [original](https://github.com/GoogleCloudPlatform/ci-cd-for-data-processing-workflow/tree/master/source-code/workflow-dag)
