@@ -9,10 +9,10 @@ for the overall steps to run the code.
 > **DISCLAIMER**: the present repo is a work in progress, and some commands may
 > fail. Feel free to file an issue if you find any errors while using it!  
 
-Bear in mind the `workflow` folder in this fork is different from the
-[original](https://github.com/GoogleCloudPlatform/ci-cd-for-data-processing-workflow/tree/master/source-code/workflow-dag)
-`workflow-dag`. The changes were inspired by additional thoughts from the
-below examples.
+Bear in mind the `source-code/workflow` folder structure in this fork is
+different from the [original](https://github.com/GoogleCloudPlatform/ci-cd-for-data-processing-workflow/tree/master/source-code/workflow-dag)
+`source-code/workflow-dag`. The changes were inspired by additional thoughts
+from the below [examples](#useful-links--examples).
 
 ## Useful Links & Examples
 
