@@ -16,8 +16,7 @@
 import unittest
 from unittest import mock
 
-from plugins.xcom_utils_plugin.operators.compare_xcom_maps import \
-    CompareXComMapsOperator
+from plugins.compare_xcom_maps import CompareXComMapsOperator
 
 TASK_ID = 'test_compare_task_id'
 REF_TASK_ID = 'download_ref_string'

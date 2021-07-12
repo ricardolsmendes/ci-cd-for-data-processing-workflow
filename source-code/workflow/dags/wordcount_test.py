@@ -44,6 +44,7 @@ yesterday = datetime.datetime.combine(
     datetime.datetime.min.time())
 
 default_args = {
+    'owner': 'ricardolsmendes@gmail.com',
     'dataflow_default_options': {
         'project': project,
         'zone': zone,
@@ -52,7 +53,7 @@ default_args = {
     }
 }
 
-with models.DAG('test_word_count',
+with models.DAG('wordcount_test',
                 schedule_interval=None,
                 default_args=default_args) as dag:
 
