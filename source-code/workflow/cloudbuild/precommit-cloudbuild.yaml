@@ -21,7 +21,7 @@ steps:
 - name: gcr.io/cloud-solutions-images/apache-airflow:1.10
   entrypoint: 'bash'
   args: [
-      'cloudbuild/run_tests.sh',
+      'cloudbuild/run-tests.sh',
       './config/AirflowVariables.json',
       './plugins'
   ]

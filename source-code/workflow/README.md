@@ -6,4 +6,4 @@
    Builder](https://cloud.google.com/build/docs/build-debug-locally)
    
 1. Run
-   `cloud-build-local --config=./cloudbuild/precommit_cloudbuild.yaml --dryrun=false .`
+   `cloud-build-local --config=./cloudbuild/precommit-cloudbuild.yaml --dryrun=false .`

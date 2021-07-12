@@ -36,5 +36,5 @@ export COMPOSER_ZONE_ID='us-central1-a'
 
 export COMPOSER_ENV_NAME='data-pipeline-composer'
 export SOURCE_CODE_REPO='data-pipeline-source'
-export COMPOSER_DAG_NAME_TEST='test_word_count'
-export COMPOSER_DAG_NAME_PROD='prod_word_count'
+export COMPOSER_DAG_NAME_TEST='wordcount_test'
+export COMPOSER_DAG_NAME_PROD='wordcount_prod'

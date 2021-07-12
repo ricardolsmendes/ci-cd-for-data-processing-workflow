@@ -45,7 +45,7 @@ steps:
   ]
   id: 'set-composer-jar-ref'
 - name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'data_pipeline_prod.py', '${_COMPOSER_DAG_BUCKET}']
+  args: ['cp', 'wordcount_prod.py', '${_COMPOSER_DAG_BUCKET}']
   dir: '$REPO_NAME/workflow/dags'
   id: 'deploy-processing-pipeline'
 - name: gcr.io/cloud-builders/gcloud
